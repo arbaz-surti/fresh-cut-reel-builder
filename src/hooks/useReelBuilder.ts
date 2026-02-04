@@ -66,9 +66,9 @@ export function useReelBuilder() {
       setProgressMessage(PROGRESS_MESSAGES.generating);
       const result = await generateReel(processedImage, description);
 
-      if (result.success && result.videoUrl && result.caption) {
+      if (result.success && result.videoUrl) {
         setVideoUrl(result.videoUrl);
-        setCaption(result.caption);
+        setCaption(result.caption || '');
         setGenerationId(result.generationId || null);
         setAppState('preview');
       } else {
