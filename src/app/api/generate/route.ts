@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 // Allow larger body sizes for image uploads
 export const dynamic = 'force-dynamic';
 
+// Extend timeout to 60s (max for Vercel Hobby plan)
+// n8n workflow needs ~40-50s for image upload + video generation + caption
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
