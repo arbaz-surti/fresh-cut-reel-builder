@@ -95,8 +95,9 @@ export function useReelBuilder() {
     try {
       const result = await postToIG(videoUrl, caption, generationId);
 
-      if (result.success && result.postUrl) {
-        setPostUrl(result.postUrl);
+      if (result.success) {
+        // postUrl might not always be returned, mediaId is also valid
+        setPostUrl(result.postUrl || null);
         setAppState('success');
       } else {
         throw new Error(result.error || 'Failed to post to Instagram');
